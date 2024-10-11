@@ -1,0 +1,889 @@
+Assignment 1: Create a Database and Table
+
+CREATE DATABASE CompanyDB;
+USE CompanyDB;
+
+CREATE TABLE Employees (
+EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+FirstName VARCHAR(50),
+LastName VARCHAR(50),
+Department VARCHAR(50),
+Salary DECIMAL(10, 2)
+);
+
+Assignment 2: Insert Data into a Table 
+
+INSERT INTO Employees (FirstName, LastName, Department, Salary)
+VALUES 
+('John', 'Doe', 'HR', 50000),
+('Jane', 'Smith', 'IT', 60000),
+('David', 'Lee', 'Marketing', 55000);
+
+Assignment 3: Select and Query Data 
+
+SELECT * FROM Employees;
+SELECT FirstName, LastName, Salary
+FROM Employees
+WHERE Department = 'IT' AND Salary > 50000;
+
+SELECT MAX(Salary) AS HighestSalary
+FROM Employees;
+
+Assignment 4: Update Data in a Table
+
+UPDATE Employees
+SET Salary = 55000
+WHERE FirstName = 'John' AND LastName = 'Doe';
+
+UPDATE Employees
+SET Department = 'Marketing'
+WHERE FirstName = 'Jane' AND LastName = 'Smith';
+
+Assignment 5: Delete Data from a Table 
+DELETE FROM Employees
+WHERE FirstName = 'David' AND LastName = 'Lee';
+DELETE FROM Employees
+WHERE Department = 'Marketing';
+
+
+--create database Products
+--use Products
+
+--create Table Products(
+--ProductID int not null Primary key,
+--ProductName varchar(255),
+--Category varchar(255),
+--Price int,
+--Stock int
+--);
+--select * from Products
+--drop table Products
+
+
+--1. Create a tabled named Products and insert below records in the table.
+
+
+--INSERT INTO Products (ProductID,ProductName, Category, Price, Stock)
+--VALUES
+--(1,'Laptop', 'Electronics', 1000, 50),
+--(2,'Mouse', 'Electronics', 20, 200),
+--(3,'Keyboard', 'Electronics', 30, 150),
+--(4,'Printer', 'Electronics', 150, 75);
+--select * from Products
+
+
+
+----2. Select all columns from the Products table
+--select * from Products;
+
+----3. Select products, sorted by their price in descending order. 
+
+--select * from  Products order by Price desc;
+
+----4. Update the price of the "Mouse" to 25. 
+--UPDATE Products set price=25 where ProductName = 'Mouse'
+
+----5. Delete the product with ProductID 2 (Mouse)
+
+--delete from products where ProductID=2
+
+--6. Select products sorted by ProductName in alphabetical order
+
+--select * from products order by ProductName
+
+
+--Assignment 7: Library Management 
+--Task: 
+--1. Create a tabled named Books with the below structure and insert below records in the 
+--table. 
+
+--create database assi7
+--use assi7
+
+--CREATE TABLE Books (
+--    BookID INT,
+--    Title VARCHAR(100),
+--    Author VARCHAR(100),
+--    PublishedYear INT,
+--    AvailableCopies INT
+--);
+
+--select * from books
+
+--2. Update the available copies of "1984" to 5.
+
+--INSERT INTO Books (BookID, Title, Author, PublishedYear, AvailableCopies)
+--VALUES
+--(1, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 3),
+--(2, '1984', 'George Orwell', 1949, 2),
+--(3, 'To Kill a Mockingbird', 'Harper Lee', 1960, 5),
+--(4, 'Brave New World', 'Aldous Huxley', 1932, 4);
+
+----3. Delete the book with BookID 1 (The Great Gatsby).
+
+--UPDATE Books
+--SET AvailableCopies = 5
+--WHERE Title = '1984';
+
+----4. Write a query to Select books published after 1950. 
+--SELECT * FROM Books
+--WHERE PublishedYear > 1950;
+
+
+--Assignment 8: Customer Management 
+--Task: 
+--1. Create a Customers table containing details about customers with the below details.
+
+
+--create database assi8
+
+--use assi8
+
+--CREATE TABLE Customers (
+--    CustomerID INT,
+--    CustomerName VARCHAR(100),
+--    Email VARCHAR(100),
+--    PhoneNumber VARCHAR(20)
+--);
+
+--INSERT INTO Customers (CustomerID, CustomerName, Email, PhoneNumber)
+--VALUES
+--(201, 'Alice Johnson', 'alice@example.com', '555-1234'),
+--(202, 'Bob Smith', 'bob@example.com', '555-5678'),
+--(203, 'Charlie Brown', 'charlie@example.com', '555-8765');
+
+--select * from Customers
+
+--2. Insert a new customer into the Customers table with the following details: 
+--a. CustomerID: 204 
+--b. CustomerName: David Wilson 
+--c. Email: david@example.com 
+----d. PhoneNumber: 555-4321 
+
+--INSERT INTO Customers (CustomerID, CustomerName, Email, PhoneNumber)
+--VALUES
+--(204, 'David Wilson', 'david@example.com', '555-4321');
+
+
+--3. Update the phone number of "Alice Johnson" to "555-9999". 
+
+--INSERT INTO Customers (CustomerID, CustomerName, Email, PhoneNumber)
+--VALUES
+--(204, 'David Wilson', 'david@example.com', '555-4321');
+
+
+----4. Delete the customer with CustomerID 202 (Bob Smith).
+
+--DELETE FROM Customers
+--WHERE CustomerID = 202;
+
+
+--create database assi9
+
+--use assi9
+
+
+--Assignment 9: Orders Management 
+--Task: 
+--1. Create an Orders table that contains information about customer orders with the below 
+--details: 
+
+--CREATE TABLE Orders (
+--    OrderID INT,
+--    CustomerID INT,
+--    OrderDate DATE,
+--    TotalAmount DECIMAL(10, 2)
+--);
+
+--INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount)
+--VALUES
+--(301, 201, '2024-09-01', 250.00),
+--(302, 202, '2024-09-02', 150.00),
+--(303, 203, '2024-09-03', 200.00);
+
+--select * from Orders
+
+--2. Insert a new order into the Orders table with the following details: 
+--a. OrderID: 304 
+--b. CustomerID: 204 
+--c. OrderDate: 2024-09-04 
+--d. TotalAmount: 300.00 
+
+--INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount)
+--VALUES
+--(304, 204, '2024-09-04', 300.00);
+
+--3. Update the TotalAmount for OrderID 301 to 275.00.
+
+--UPDATE Orders
+--SET TotalAmount = 275.00
+--WHERE OrderID = 301;
+
+--4. Delete the order with OrderID 302. 
+
+--DELETE FROM Orders
+--WHERE OrderID = 302;
+
+--5. Select orders with a total amount greater than 200.
+
+--SELECT * FROM Orders
+--WHERE TotalAmount > 200.00;
+
+--6. Select only the OrderID and TotalAmount for all orders. 
+
+--SELECT OrderID, TotalAmount FROM Orders;
+
+--Types of keys 
+--Assignment 10: Primary Key 
+--Task: 
+--Create a Students table with a StudentID as the primary key and include the following columns: 
+--FirstName, LastName, and Email. Insert three records into the table. 
+
+--create database primarykey
+
+--use primarykey
+
+--CREATE TABLE Students (
+--    StudentID INT PRIMARY KEY,
+--    FirstName VARCHAR(50),
+--    LastName VARCHAR(50),
+--    Email VARCHAR(100)
+--);
+
+--select * from Students
+
+--INSERT INTO Students (StudentID, FirstName, LastName, Email)
+--VALUES
+--(1, 'John', 'Doe', 'john.doe@example.com'),
+--(2, 'Jane', 'Smith', 'jane.smith@example.com'),
+--(3, 'Mike', 'Johnson', 'mike.johnson@example.com');
+
+
+--Assignment 11: Foreign Key 
+--Task: 
+--Create a Courses table with a CourseID as the primary key. Create a Enrollments table with a 
+--StudentID as a foreign key referencing the Students table and a CourseID as a foreign key 
+--referencing the Courses table. Insert sample data into both tables. 
+
+--create database foreignkey
+
+--use foreignkey
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(100)
+);
+
+
+
+
+CREATE TABLE details (
+    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2),
+	);
+
+INSERT INTO details (FirstName, LastName, Department, Salary)
+VALUES 
+('John', 'Doe', 'HR', 50000),
+('Jane', 'Smith', 'IT', 60000),
+('David', 'Lee', 'Marketing', 55000);
+
+SELECT * FROM details
+
+Assignment 17: Basic View Creation 
+
+1. Create a simple view named EmployeeView that displays the FirstName, LastName, and 
+Department columns from the Employees table. 
+
+CREATE VIEW EmployeeView AS
+SELECT FirstName, LastName, Department
+FROM details;
+
+2. Query the view to display the details 
+
+SELECT * FROM EmployeeView;
+
+Assignment 18 : Updating Data Through a VieW
+1. Create a view named EditableEmployeeView that shows EmployeeID, FirstName, 
+LastName, and Salary
+
+
+CREATE VIEW EditableEmployeeView AS
+SELECT EmployeeID, FirstName, LastName, Salary
+FROM details;
+
+------2. Update the salary of an employee using the view.
+
+UPDATE EditableEmployeeView
+SET Salary = 55000
+WHERE EmployeeID = 1;
+
+------3. Verify the update
+
+SELECT * FROM EditableEmployeeView
+WHERE EmployeeID = 1;
+
+------Assignment 19 :View with Calculated Columns 
+
+------1. Create a view named EmployeeSalaryBonusView that displays each employee’s 
+------FirstName, LastName, Salary, and a calculated column Bonus (10% of the salary). 
+----CREATE VIEW EmployeeSalaryBonusView AS
+----SELECT  FirstName, LastName, Salary, Salary * 0.10 AS Bonus FROM details;
+
+------2. Query the view 
+----SELECT * FROM EmployeeSalaryBonusView;
+
+------Assignment 20 : Altering a View 
+------1. Alter the EmployeeView from Assignment 1 to include a new column Salary. 
+
+----ALTER VIEW EmployeeView AS
+----SELECT FirstName, LastName, Department, Salary
+----FROM details;
+
+------2. Verify the view with the updated column. 
+
+----SELECT * FROM EmployeeView;
+
+------ Assignment 21 : View with Parameters (Simulated via Filters) 
+
+------1. Create a view named FilteredEmployeeView from employees table that displays 
+------EmployeeID,FirstName,LastName & Department. 
+ 
+
+----CREATE VIEW FilteredEmployeeView AS
+----SELECT EmployeeID, FirstName, LastName, Department
+----FROM details;
+
+------2. Use a query on the view to return employees in a specific department
+
+
+----SELECT * FROM FilteredEmployeeView
+----WHERE Department = 'HR';
+
+------ Assignment 22:: Dropping a View
+----DROP VIEW employeeview;
+----select * from employeeview
+
+
+----SQL Server Lab Assignments-Part 2
+
+----Assignment 1: Sales Database
+----Scenario:
+----You are given a Sales table containing sales data for various products. The table structure is as
+----follows:
+
+--CREATE TABLE Sales (
+--    SaleID INT IDENTITY(1,1) PRIMARY KEY,
+--    ProductID INT,
+--    ProductName VARCHAR(50),
+--    QuantitySold INT,
+--    SaleAmount DECIMAL(10, 2),
+--    SaleDate DATE
+--);
+--INSERT INTO Sales (ProductID, ProductName, QuantitySold, SaleAmount, SaleDate) VALUES
+--(101, 'Laptop', 5, 5000.00, '2024-09-01'),
+--(102, 'Mouse', 10, 250.00, '2024-09-02'),
+--(101, 'Laptop', 3, 3000.00, '2024-09-03'),
+--(103, 'Keyboard', 8, 800.00, '2024-09-04'),
+--(102, 'Mouse', 6, 150.00, '2024-09-05');
+
+--select * from Sales
+
+----1. Write a query to calculate the total sales amount for all products (SUM). 
+
+--SELECT SUM(SaleAmount) AS TotalSalesAmount
+--FROM Sales;
+
+----2. Write a query to find the maximum quantity sold of any product (MAX). 
+--SELECT MAX(QuantitySold) AS MaxQuantitySold
+--FROM Sales;
+
+----3. Write a query to calculate the average sale amount per sale (AVG).
+--SELECT AVG(SaleAmount) AS AverageSaleAmount
+--FROM Sales;
+
+----4. Write a query to find the minimum sale amount in the database (MIN)
+--SELECT MIN(SaleAmount) AS MinimumSaleAmount
+--FROM Sales;
+
+----5. Write a query to calculate the total quantity sold of a specific product, say "Laptop" 
+----(SUM with WHERE clause). 
+--SELECT SUM(QuantitySold) AS TotalLaptopQuantity
+--FROM Sales
+--WHERE ProductName = 'Laptop';
+
+--Assignment 2: Employee Salaries
+
+
+--CREATE TABLE Employees (
+--    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+--    EmployeeName VARCHAR(50),
+--    Department VARCHAR(50),
+--    Salary DECIMAL(10, 2),
+--    HireDate DATE
+--);
+
+--INSERT INTO Employees (EmployeeName, Department, Salary, HireDate) VALUES
+--('John Doe', 'IT', 5000.00, '2022-01-10'),
+--('Jane Smith', 'HR', 6000.00, '2021-03-15'),
+--('Bob Johnson', 'Finance', 5500.00, '2020-06-20'),
+--('Alice Brown', 'IT', 6200.00, '2023-02-01'),
+--('Charlie White', 'Marketing', 4800.00, '2023-03-10');
+
+--SELECT * FROM Employees
+
+--1. Write a query to find the total salary expenditure for all employees (SUM).
+--SELECT SUM(Salary) AS TotalSalaryExpenditure
+--FROM Employees;
+
+
+--2. Write a query to find the highest salary among all employees (MAX). 
+--SELECT MAX(Salary) AS HighestSalary
+--FROM Employees;
+
+
+--3. Write a query to calculate the average salary across all employees (AVG).
+--SELECT AVG(Salary) AS AverageSalary
+--FROM Employees;
+
+
+--4. Write a query to find the minimum salary in the IT department (MIN with WHERE 
+--clause). 
+--SELECT MIN(Salary) AS MinimumITSalary
+--FROM Employees
+--WHERE Department = 'IT';
+
+
+--5. Write a query to find the total number of employees in each department (COUNT and 
+--GROUP BY). 
+--SELECT Department, COUNT(*) AS TotalEmployees
+--FROM Employees
+--GROUP BY Department;
+
+--Assignment 3: Inventory Management
+
+--CREATE TABLE Inventory (
+--    ProductID INT PRIMARY KEY,
+--    ProductName VARCHAR(50),
+--    QuantityInStock INT,
+--    ReorderLevel INT,
+--    LastRestockDate DATE
+--);
+
+--INSERT INTO Inventory (ProductID, ProductName, QuantityInStock, ReorderLevel, LastRestockDate) VALUES
+--(201, 'Monitor', 50, 10, '2024-08-25'),
+--(202, 'Printer', 30, 5, '2024-09-01'),
+--(203, 'Mouse', 100, 15, '2024-09-10'),
+--(204, 'Keyboard', 80, 20, '2024-09-15'),
+--(205, 'Laptop', 25, 5, '2024-09-20');
+
+--SELECT * FROM Inventory
+
+----1. Write a query to find the total quantity of products in stock (SUM). 
+--SELECT SUM(QuantityInStock) AS TotalQuantityInStock
+--FROM Inventory;
+
+
+----2. Write a query to find the product with the highest quantity in stock (MAX). 
+--SELECT ProductName, QuantityInStock
+--FROM Inventory
+--WHERE QuantityInStock = (SELECT MAX(QuantityInStock) FROM Inventory);
+
+
+----3. Write a query to find the average reorder level across all products (AVG). 
+--SELECT AVG(ReorderLevel) AS AverageReorderLevel
+--FROM Inventory;
+
+
+----4. Write a query to find the product with the lowest reorder level (MIN). 
+
+--SELECT ProductName, ReorderLevel
+--FROM Inventory
+--WHERE ReorderLevel = (SELECT MIN(ReorderLevel) FROM Inventory);
+
+
+----5. Write a query to find the total quantity in stock for products where the quantity is 
+----less than the reorder level (SUM with WHERE clause). 
+--SELECT SUM(QuantityInStock) AS TotalQuantityBelowReorderLevel
+--FROM Inventory
+--WHERE QuantityInStock < ReorderLevel;
+
+
+--Assignment 4: Customer Orders Database
+
+--CREATE TABLE CustomerOrders (
+--    OrderID INT PRIMARY KEY,
+--    CustomerID VARCHAR(50),
+--    OrderDate DATE,
+--    OrderAmount DECIMAL(10, 2),
+--    QuantityOrdered INT
+--);
+--INSERT INTO CustomerOrders (OrderID, CustomerID, OrderDate, OrderAmount, QuantityOrdered) VALUES
+--(501, 'C001', '2024-09-10', 1500, 3),
+--(502, 'C002', '2024-09-11', 2000, 5),
+--(503, 'C001', '2024-09-12', 1000, 2),
+--(504, 'C003', '2024-09-13', 2500, 4),
+--(505, 'C002', '2024-09-14', 3000, 6);
+
+--SELECT * FROM CustomerOrders
+
+----1. Write a query to calculate the total order amount for all orders (SUM). 
+--SELECT SUM(OrderAmount) AS TotalOrderAmount
+--FROM CustomerOrders;
+
+
+----2. Write a query to find the average order amount for all customers (AVG). 
+--SELECT AVG(OrderAmount) AS AverageOrderAmount
+--FROM CustomerOrders;
+
+
+----3. Write a query to find the maximum order amount from a single order (MAX).
+--SELECT MAX(OrderAmount) AS MaximumOrderAmount
+--FROM CustomerOrders;
+
+
+----4. Write a query to find the total quantity ordered across all orders (SUM). 
+--SELECT SUM(QuantityOrdered) AS TotalQuantityOrdered
+--FROM CustomerOrders;
+
+
+----5. Write a query to find the minimum order amount in the database (MIN).
+
+--SELECT MIN(OrderAmount) AS MinimumOrderAmount
+--FROM CustomerOrders;
+
+--Assignment 6: Product Ratings Database
+
+--CREATE TABLE ProductRatings (
+--    RatingID INT PRIMARY KEY IDENTITY(1,1),
+--    ProductID VARCHAR(50),
+--    CustomerID VARCHAR(50),
+--    Rating INT,
+--    ReviewDate DATE
+--);
+
+--INSERT INTO ProductRatings (ProductID, CustomerID, Rating, ReviewDate) VALUES
+--('P001', 'C001', 4, '2024-09-01'),
+--('P002', 'C002', 5, '2024-09-02'),
+--('P001', 'C003', 3, '2024-09-03'),
+--('P003', 'C001', 2, '2024-09-04'),
+--('P002', 'C004', 4, '2024-09-05');
+
+--SELECT * FROM ProductRatings
+
+----1. Write a query to calculate the average rating for each product (AVG with GROUP BY). 
+--SELECT ProductID, AVG(Rating) AS AverageRating
+--FROM ProductRatings
+--GROUP BY ProductID;
+
+
+----2. Write a query to find the highest rating given to any product (MAX). 
+--SELECT MAX(Rating) AS HighestRating
+--FROM ProductRatings;
+
+
+----3. Write a query to find the lowest rating given to any product (MIN). 
+
+--SELECT MIN(Rating) AS LowestRating
+--FROM ProductRatings;
+
+----4. Write a query to find the total number of ratings for each product (COUNT and GROUP 
+----BY). 
+--SELECT ProductID, COUNT(Rating) AS TotalRatings
+--FROM ProductRatings
+--GROUP BY ProductID;
+
+----5. Write a query to find the total number of products rated (COUNT with DISTINCT). 
+
+--SELECT COUNT(DISTINCT ProductID) AS TotalProductsRated
+--FROM ProductRatings;
+
+--SQL Server assignments and solutions using various SQL operators such as IN, 
+--BETWEEN, LIKE, AND, OR, NOT, etc.
+
+
+--Assignment 1: 
+--Retrieve Employees Who Work in Specific Departments Using IN Operator 
+--Task: Retrieve the names of employees who work in either the 'HR', 'Finance', or 'IT' 
+--departments. 
+
+--select * from Employees where Department in ('HR','IT') 
+
+--Assignment 2: 
+--Retrieve Products Within a Specific Price Range Using BETWEEN Operator 
+
+--Retrieve the product names and prices of products that are priced between 100 and 500. 
+
+--select * from Sales where SaleAmount between 150 and 500
+
+--Assignment 3: 
+--Find Customers Whose Name Starts With 'A' Using LIKE Operator 
+--Task: Retrieve the customer names that start with the letter 'A'. 
+
+
+
+--alter table Employees
+--add Name varchar(50)
+
+--Update Employees
+--Set Name='Ashok'
+--where Department='HR'
+
+--select * from Employees
+
+--select * from Employees where FirstName like '%A%'
+
+--Assignment 4: 
+--Retrieve Orders Placed on Specific Dates Using IN Operator 
+--Task: Retrieve the order IDs of orders placed on '2023-01-01', '2023-02-01', and '2023-03-01'. 
+--Tables: 
+--( Orders (OrderID, OrderDate)
+--CREATE TABLE Orders (
+--    OrderID INT PRIMARY KEY,    
+--    OrderDate DATE              
+--);
+
+--INSERT INTO Orders (OrderID, OrderDate)
+--VALUES
+--(1, '2023-01-01'),(2, '2023-01-15'),(3, '2023-02-01'),(4, '2023-03-01'),(5, '2023-04-01');
+
+--SELECT OrderID
+--FROM Orders
+--WHERE OrderDate IN ('2023-01-01', '2023-02-01', '2023-03-01');
+
+
+--Assignment 5: 
+--Retrieve Products That Are Not Priced Between 100 and 500 Using NOT BETWEEN 
+--Operator
+ 
+--select * from Sales where SaleAmount not between 150 and 500
+
+--Assignment 6: 
+--Find Orders Where the Total Amount is More Than 5000 or Less Than 1000 Using OR 
+--Operator 
+--Task: Retrieve the order IDs where the total amount is either greater than 5000 or less than 1000. 
+
+--select * from Sales where SaleAmount > 5000 or SaleAmount<1000
+----Assignment 7: 
+--Retrieve Employees Who Do Not Work in the 'HR' or 'IT' Departments Using NOT IN 
+--Operator
+
+
+--CREATE TABLE Employees1 (
+--    EmployeeID INT NOT NULL ,    
+--    EmployeeName VARCHAR(100),     
+--    DepartmentID INT, 
+	
+--);
+
+--select * from Employees1
+--INSERT INTO Employees1 (EmployeeID, EmployeeName, DepartmentID)
+--VALUES
+--(1, 'John Doe', 'HR'),
+--(2, 'Jane Smith', 'Finance'),
+--(3, 'David Lee', 'IT');
+
+--select EmployeeName
+--from Employees1
+--where DepartmentID NOT IN ('HR', 'IT');
+
+--Assignment 8: 
+--Retrieve Orders Placed in 2023 Using BETWEEN and AND Operators 
+--Task: Retrieve the order IDs of orders placed between '2024-01-01' and '2024-12-31'. 
+
+--Select * from Sales where SaleDate between '2024-01-01' and '2024-12-31'
+
+--update Sales
+--set SaleDate='2024-05-01'
+--where ProductID ='103'
+
+
+--Assignment 9: 
+--Find Customers Who Do Not Have 'John' in Their Name Using NOT LIKE Operator 
+
+--select * from Employees1 where EmployeeName not like '%John%'
+
+--Assignment 10: 
+--Retrieve Products That Are Either in Category 'A' or Priced Below 100 Using IN and OR 
+--Operators 
+--Task: Retrieve the product names and prices of products that are either in category 'A' or have a 
+--price less than 100. 
+
+-- 9-10-2024
+
+--Alter Table Command 
+1. Adding a New Column 
+Task: Add a new column Email of data type VARCHAR(100) to the Employees table
+ALTER TABLE Employees1
+ADD Email VARCHAR(100);
+
+select * from Employees1
+
+2. Dropping a Column 
+ALTER TABLE Employees1
+DROP COLUMN Email;
+
+--3. Modifying a Column's Data Type 
+
+
+ALTER TABLE Employees1
+ADD Salary DECIMAL (10,1);
+ALTER TABLE Employees1
+ALTER COLUMN Salary DECIMAL(10, 2); 
+
+ALTER TABLE Employees1
+DROP COLUMN INT;
+
+--To add data from UI choose edit top 200 rows
+
+--4. Adding a Primary Key Constraint 
+
+ALTER TABLE Employees1
+ADD CONSTRAINT PK_EmployeeID PRIMARY KEY (EmployeeID);
+
+--5.Dropping a primary key
+ALTER TABLE Employees1
+DROP CONSTRAINT PK_EmployeeID;
+
+drop table Employees1
+
+6. Adding a Foreign Key Constraint 
+
+CREATE TABLE Departments (
+    DepartmentID INT NOT NULL,    
+    DepartmentName VARCHAR(100),            
+);
+
+drop table Departments
+
+alter table Departments
+drop constraint PK_DepartmentId
+
+select * from Departments
+INSERT INTO Departments (DepartmentID,DepartmentName)
+VALUES
+(4, 'IT' ),
+(5, 'HR' ),
+(6, 'Media');
+
+
+ALTER TABLE Employees1
+ALTER COLUMN DepartmentID INT;
+
+
+ALTER TABLE Employees1
+ADD CONSTRAINT FK_DepartmentID 
+FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID);
+
+--Assignment 6: Drop a Foreign Key
+
+ALTER TABLE Employees1
+DROP CONSTRAINT FK_DepartmentID;
+
+--Assignment 7: Rename a Column 
+
+CREATE TABLE Employee2 (
+    EmployeeID INT PRIMARY KEY,
+    FullName VARCHAR(100),
+    Position VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+select * from Employee2
+
+ALTER TABLE Employee2
+exec sp_rename 'Employee2.FullName', 'EmployeeFullName', 'COLUMN'; 
+
+--Assignment 8: Add a Default Value
+ALTER TABLE Employees1
+Add HireDate Date;
+ALTER TABLE Employees1
+ADD	CONSTRAINT DF_HireDate
+DEFAULT GETDATE() FOR HireDate; 
+
+select * from Employees1
+Insert into Employees1
+(EmployeeID,EmployeeName,DepartmentID,HireDate)
+values
+(1,'John',4,default);
+
+Assignment 9: Drop a Primary Key
+
+alter table Departments 
+add constraint PK_DepartmentID PRIMARY KEY(DepartmentID)
+
+
+ALTER TABLE Departments
+DROP CONSTRAINT PK_DepartmentID;
+
+Assignment 10: Add a Unique Constraint 
+Task: Ensure the Email column in the Employees table is unique by adding a unique constraint.
+
+CREATE TABLE Employees1 (
+    EmployeeID INT NOT NULL ,    
+    EmployeeName VARCHAR(100),     
+    DepartmentID INT, 
+	
+);
+
+select * from Employees1
+ALTER TABLE Employees1
+ADD Email varchar(255)
+
+Drop table Employees1
+
+ALTER TABLE Employees1
+ADD CONSTRAINT UQ_Email UNIQUE (Email);
+
+
+Assignment 11: Add a Check Constraint
+
+
+ALTER TABLE Employees1
+ADD Salary DECIMAL(10, 2);
+
+ALTER TABLE Employees
+ADD CONSTRAINT CHK_Salary CHECK (Salary >= 1000);
+
+Assignment 13: Drop a Check Constraint
+
+
+ALTER TABLE Employees
+DROP CONSTRAINT CHK_Salary;
+
+INSERT INTO Employees1 (EmployeeID, EmployeeName, DepartmentID, HireDate, Email, Salary)
+VALUES
+(1, 'Jai', 4, '2024-09-14', 'jai@gmail.com', 2000.00),
+(2, 'Jane', 3, '2024-09-22', 'jane@gmail.com', 4000.00),
+(3, 'Ajay', 2, '2024-05-01', 'ajay@example.com', 3500.00),
+(4, 'Sara', 1, '2023-07-20', 'sara@gmail.com', 5000.00);
+
+
+truncate table Employees1
+
+Assignment 13: Drop a Check Constraint
+
+
+ALTER TABLE Employees
+DROP CONSTRAINT CHK_Salary;
+
+
+
+
+use companyDB
+CREATE TABLE classEmp (
+    EmployeeID INT ,
+    EmployeeName VARCHAR(100),
+    ManagerName VARCHAR(100)
+);
+
+INSERT INTO classEmp (EmployeeID, EmployeeName, ManagerName)
+VALUES
+(1, 'Ravi', NULL),  
+(2, 'Raj', 'Sajin'),
+(3, 'Sachin', 'Raj'),
+(4, 'Sajin', 'Ravi'); 
+
+select * from classEmp
