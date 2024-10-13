@@ -1,0 +1,320 @@
+use companyA
+CREATE TABLE DEPT(             
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100)
+);
+CREATE TABLE EMPLOY (
+    EmployeeID INT PRIMARY KEY,
+    EmployName VARCHAR(100),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES DEPT(DepartmentID)  -- Foreign key referencing Employees
+);
+
+insert into DEPT(DepartmentID,DepartmentName)
+values
+(1,'HR'),
+(2,'IT'),
+(3,'Media');
+
+select * from DEPT
+
+
+insert into EMPLOY(EmployeeID,EmployName,DepartmentID)
+values
+(101,'JOE',1),
+(102,'SAM',1),
+(103,'BEN',2),
+(104,'JASON',3);
+
+select * from DEPT
+select * from EMPLOY
+Assignment 1: 
+Retrieve Employees and Their Department Names (INNER JOIN) 
+Task: Retrieve the employee names and their corresponding department names. 
+
+select * from DEPT
+select * from EMPLOY
+SELECT E.EmployeeID, E.EmployName, D.DepartmentName
+FROM EMPLOY E
+INNER JOIN DEPT D
+ON E.DepartmentID = D.DepartmentID;
+
+
+
+
+Assignment 2: 
+Retrieve All Employees and Their Department Names, Including Those Without 
+Departments (LEFT JOIN) 
+
+select * from DEPT
+select * from EMPLOY
+SELECT E.EmployeeID, E.EmployName, D.DepartmentName
+FROM EMPLOY E
+LEFT JOIN DEPT D
+ON E.DepartmentID = D.DepartmentID;
+
+--ASSI 3
+
+select * from DEPT
+select * from EMPLOY
+SELECT E.EmployeeID, E.EmployName, D.DepartmentName
+FROM EMPLOY E
+RIGHT JOIN DEPT D
+ON E.DepartmentID = D.DepartmentID;
+
+ASSI 4
+
+select * from DEPT
+select * from EMPLOY
+
+SELECT E.EmployeeID, E.EmployName, D.DepartmentName
+FROM EMPLOY E
+FULL OUTER JOIN DEPT D
+ON E.DepartmentID = D.DepartmentID;
+
+ASSI 5
+Retrieve Orders and the Customers Who Placed Them (INNER JOIN) 
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(100)
+);
+
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT INTO Customers (CustomerID, CustomerName) VALUES
+(1, 'John Doe'),
+(2, 'Jane Smith'),
+(3, 'Michael Johnson');
+
+
+INSERT INTO Orders (OrderID, CustomerID) VALUES
+(101, 1),
+(102, 2),
+(103, 1);
+
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+Assignment 6: 
+Retrieve Orders and Customers, Including Customers Without Orders (LEFT JOIN)
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+
+Assignment 7: 
+Retrieve Products and Their Categories (INNER JOIN) 
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(100)
+);
+
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    CategoryID INT,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+INSERT INTO Categories (CategoryID, CategoryName) VALUES
+(1, 'Electronics'),
+(2, 'Furniture'),
+(3, 'Clothing');
+
+
+INSERT INTO Products (ProductID, ProductName, CategoryID) VALUES
+(1, 'Laptop', 1),
+(2, 'Sofa', 2),
+(3, 'T-shirt', 3),
+(4, 'Headphones', 1);
+
+SELECT Products.ProductName, Categories.CategoryName
+FROM Products
+INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+
+
+Assignment 8: 
+Retrieve All Categories and Products, Including Categories Without Products (RIGHT 
+JOIN) 
+SELECT Categories.CategoryName, Products.ProductName
+FROM Categories
+RIGHT JOIN Products ON Categories.CategoryID = Products.CategoryID;
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName VARCHAR(100),
+    ManagerID INT
+);
+INSERT INTO Employees (EmployeeID, EmployeeName, ManagerID) VALUES
+(1, 'John Doe', NULL),   
+(2, 'Jane Smith', 1),    
+(3, 'Michael Johnson', 1), 
+(4, 'Sara Williams', 2),
+(5, 'David Brown', 2);
+
+SELECT e.EmployeeName AS Employee, m.EmployeeName AS Manager
+FROM Employees e
+LEFT JOIN Employees m ON e.ManagerID = m.EmployeeID;
+
+Assignment 10: 
+Get All Possible Combinations of Products and Orders (CROSS JOIN)
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100)
+);
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY
+);
+
+INSERT INTO Products (ProductID, ProductName) VALUES
+(1, 'Laptop'),
+(2, 'Sofa'),
+(3, 'T-shirt'),
+(4, 'Headphones');
+
+INSERT INTO Orders (OrderID) VALUES
+(101),
+(102),
+(103),
+(104);
+SELECT Products.ProductName, Orders.OrderID
+FROM Products
+CROSS JOIN Orders;
+
+SQL Server assignments using the GROUP BY and HAVING clauses 
+
+
+Assignment 1: 
+Find the Average Salary in Each Department 
+Task: Retrieve the department name and the average salary of employees in each department. 
+Only display departments where the average salary is greater than 50,000.
+
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100)
+);
+
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName VARCHAR(100),
+    Salary DECIMAL(10, 2),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Sales'),
+(4, 'Marketing');
+
+
+INSERT INTO Employees (EmployeeID, EmployeeName, Salary, DepartmentID) VALUES
+(1, 'John Doe', 55000, 1),
+(2, 'Jane Smith', 60000, 2),
+(3, 'Michael Johnson', 45000, 3),
+(4, 'Sara Williams', 70000, 2),
+(5, 'David Brown', 30000, 3),
+(6, 'Emma Wilson', 80000, 4),
+(7, 'James Lee', 40000, 1),
+(8, 'Sophia Miller', 90000, 4),
+(9, 'Daniel Clark', 45000, 2),
+(10, 'Emily Davis', 32000, 3),
+(11, 'Jacob Moore', 55000, 3);
+
+SELECT Departments.DepartmentName, AVG(Employees.Salary) AS AverageSalary
+FROM Employees
+INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID
+GROUP BY Departments.DepartmentName
+HAVING AVG(Employees.Salary) > 50000;
+
+Assignment 2: 
+Count the Number of Employees in Each Department 
+Task: Retrieve the department name and the total number of employees in each department. 
+Only display departments that have more than 5 employees. 
+
+SELECT Departments.DepartmentName, COUNT(Employees.EmployeeID) AS EmployeeCount
+FROM Employees
+INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID
+GROUP BY Departments.DepartmentName
+HAVING COUNT(Employees.EmployeeID) > 5;
+
+Assignment 3: 
+Find the Maximum and Minimum Salary in Each Department 
+Task: Retrieve the department name, maximum salary, and minimum salary for each 
+department. Only include departments where the minimum salary is greater than 30,000. 
+
+SELECT Departments.DepartmentName, MAX(Employees.Salary) AS MaxSalary, MIN(Employees.Salary) AS MinSalary
+FROM Employees
+INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID
+GROUP BY Departments.DepartmentName
+HAVING MIN(Employees.Salary) > 30000;
+
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    EmployeeID INT,
+    Amount DECIMAL(10, 2)
+);
+
+INSERT INTO Sales (SalesID, EmployeeID, Amount) VALUES
+(1, 1, 50000),
+(2, 2, 150000),
+(3, 3, 60000),
+(4, 1, 80000),
+(5, 2, 30000),
+(6, 3, 55000);
+
+
+SELECT Employees.EmployeeName, SUM(Sales.Amount) AS TotalSales
+FROM Sales
+INNER JOIN Employees ON Sales.EmployeeID = Employees.EmployeeID
+GROUP BY Employees.EmployeeName
+HAVING SUM(Sales.Amount) > 100000;
+
+Assignment 5: 
+Find the Number of Orders by Each Customer
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(100)
+);
+
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT INTO Customers (CustomerID, CustomerName) VALUES
+(1, 'John Doe'),
+(2, 'Jane Smith'),
+(3, 'Michael Johnson');
+
+
+INSERT INTO Orders (OrderID, CustomerID) VALUES
+(101, 1),
+(102, 1),
+(103, 2),
+(104, 3),
+(105, 1),
+(106, 2),
+(107, 1),
+(108, 3),
+(109, 2),
+(110, 3);
+
+SELECT Customers.CustomerName, COUNT(Orders.OrderID) AS TotalOrders
+FROM Customers
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+GROUP BY Customers.CustomerName
+HAVING COUNT(Orders.OrderID) > 3;
