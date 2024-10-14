@@ -1,0 +1,14 @@
+C:\Users\NEGHA\source\repos\q4\q4\obj\Debug\q4.csproj.AssemblyReference.cache
+C:\Users\NEGHA\source\repos\q4\q4\obj\Debug\q4.csproj.CoreCompileInputs.cache
+C:\Users\NEGHA\source\repos\q4\q4\bin\Debug\q4.exe.config
+C:\Users\NEGHA\source\repos\q4\q4\bin\Debug\q4.exe
+C:\Users\NEGHA\source\repos\q4\q4\bin\Debug\q4.pdb
+C:\Users\NEGHA\source\repos\q4\q4\obj\Debug\q4.exe
+C:\Users\NEGHA\source\repos\q4\q4\obj\Debug\q4.pdb
+D:\repos\Lab1\q4\obj\Debug\q4.csproj.AssemblyReference.cache
+D:\repos\Lab1\q4\obj\Debug\q4.csproj.CoreCompileInputs.cache
+D:\repos\Lab1\q4\obj\Debug\q4.exe
+D:\repos\Lab1\q4\obj\Debug\q4.pdb
+D:\repos\Lab1\q4\bin\Debug\q4.exe.config
+D:\repos\Lab1\q4\bin\Debug\q4.exe
+D:\repos\Lab1\q4\bin\Debug\q4.pdb
